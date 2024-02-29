@@ -1,0 +1,43 @@
+<div class="hangman-main">
+  <h2>{{ gameTitle }}</h2>
+
+  @if (!isGameOver) {
+    <div>
+      <p>Word: <span class="challenge-word">{{ displayedWord }}</span> ( {{ word.length }} letters )</p>
+      <p>Incorrect Guesses: {{ incorrectGuesses.join(', ') }}</p>
+      <ul>
+        @for (guess of incorrectGuesses; track guess; let index = $index, first = $first, last = $last, even = $even, odd = $odd, count = $count) {
+        Total count {{count}}
+        <li>
+        <strong>{{guess}}</strong>
+        - index {{index}}
+        - is it first? {{first}}
+        - is it last? {{last}}
+        - is it even? {{even}}
+        - is it odd? {{odd}}
+        </li>
+        }
+        @empty {
+        <span>Guess list is empty</span>
+        }
+    </ul>
+
+      <label for="letterInput">Guess a letter: </label>
+      <input type="text" id="letterInput" [(ngModel)]="letterInput" maxlength="1" (keyup)="guessLetter(letterInput)"
+        pattern="[A-Za-z]{1}" title="Please enter only one letter"/>
+    </div>
+  }
+
+  @if (isGameOver) {
+    <div >
+      <p>Game Over!</p>
+      @if (isWordShown) {
+        <p class="lostGameMsg">The word was: <span class="hiddenWord">{{ word }}</span></p>
+      }
+      @if (userWins) {
+        <p class="wonGameMsg">Congratulations! You won!</p>
+      }
+      <button (click)="startGame()">Play Again</button>
+    </div>
+  }
+</div>
