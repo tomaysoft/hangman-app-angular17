@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-hangman',
   templateUrl: './hangman.component.html',
-  styleUrls: ['./hangman.component.css']
+  styleUrls: ['./hangman.component.scss']
 })
 export class HangmanComponent implements OnInit {
   gameTitle: string = 'Hangman Game - Angular v. 17 edition';
