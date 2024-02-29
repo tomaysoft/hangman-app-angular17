@@ -3,8 +3,8 @@
 
   @if (!isGameOver) {
     <div>
-      <p>Word: <span class="challenge-word">{{ displayedWord }}</span> ( {{ word.length }} letters )</p>
-      <p>Incorrect Guesses: {{ incorrectGuesses.join(', ') }}</p>
+      <div>Word: <span class="challenge-word">{{ displayedWord }}</span> ( {{ word.length }} letters )</div>
+      <div>Incorrect Guesses: {{ incorrectGuesses.join(', ') }}</div>
       <ul>
         @for (guess of incorrectGuesses; track guess; let index = $index, first = $first, last = $last, even = $even, odd = $odd, count = $count) {
         Total count {{count}}
@@ -30,12 +30,12 @@
 
   @if (isGameOver) {
     <div >
-      <p>Game Over!</p>
+      <div>Game Over!</div>
       @if (isWordShown) {
-        <p class="lostGameMsg">The word was: <span class="hiddenWord">{{ word }}</span></p>
+        <div class="lostGameMsg">The word was: <span class="hiddenWord">{{ word }}</span></div>
       }
       @if (userWins) {
-        <p class="wonGameMsg">Congratulations! You won!</p>
+        <div class="wonGameMsg">Congratulations! You won!</div>
       }
       <button (click)="startGame()">Play Again</button>
     </div>
